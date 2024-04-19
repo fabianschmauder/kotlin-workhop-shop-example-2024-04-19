@@ -15,4 +15,8 @@ class ProductService {
     fun listProducts(): List<Product> {
         return products
     }
+
+    fun getProductById(id: Int): Product? {
+        return products.find { product -> product.id == id}
+    }
 }

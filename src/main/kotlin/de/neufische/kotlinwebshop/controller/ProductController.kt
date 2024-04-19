@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.server.ResponseStatusException
 
@@ -14,12 +15,12 @@ import org.springframework.web.server.ResponseStatusException
 class ProductController(private val productService: ProductService) {
 
     @GetMapping
-    fun listProducts(): List<Product> {
-        return productService.listProducts()
+    fun listProducts(@RequestParam(required = false) q: String?): List<Product> {
+        return productService.listProducts(q)
     }
 
     @GetMapping("{id}")
-    fun getProductById(@PathVariable id: Int): Product {
+    fun getProductById(@PathVariable id: Int ): Product {
         return productService.getProductById(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "product with id:$id not found")
     }
 }

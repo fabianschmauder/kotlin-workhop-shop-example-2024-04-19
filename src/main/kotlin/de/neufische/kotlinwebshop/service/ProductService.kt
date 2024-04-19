@@ -7,16 +7,16 @@ import org.springframework.stereotype.Service
 class ProductService {
 
     val products = listOf(
-        Product(1,"Apple"),
-        Product(2,"Banana"),
-        Product(3,"Orange")
+        Product(1, "Apple"),
+        Product(2, "Banana"),
+        Product(3, "Orange")
     )
 
-    fun listProducts(): List<Product> {
+    fun listProducts(q: String? = null): List<Product> {
         return products
     }
 
     fun getProductById(id: Int): Product? {
-        return products.find { product -> product.id == id}
+        return products.find { product -> product.id == id }
     }
 }

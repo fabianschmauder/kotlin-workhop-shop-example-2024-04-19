@@ -2,5 +2,5 @@ POST localhost:8080/product
 Content-Type: application/json
 
 {
-    "name": "  dsdssd     "
+    "name": "Product 2"
 }

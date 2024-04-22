@@ -1,16 +1,18 @@
 package de.neufische.kotlinwebshop.data
 
-import de.neufische.kotlinwebshop.service.StuffWithName
+import jakarta.persistence.*
 
-data class Product(
-    val id: Int,
-    override val name:String,
-    val type: ProductType): StuffWithName
 
-data class Category(
-    val id: Int,
-    override val name:String,
-    val someOtherInfo: String): StuffWithName
+@Entity
+@Table(name = "product")
+class Product(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Int? = null,
+    val name:String? = null,
+    val type: ProductType = ProductType.NON_FOOD)
+
+
 
 enum class ProductType {
     FRUIT, NON_FOOD

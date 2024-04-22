@@ -1,6 +1,7 @@
 package de.neufische.kotlinwebshop.controller
 
 import de.neufische.kotlinwebshop.data.Product
+import de.neufische.kotlinwebshop.data.ProductType
 import de.neufische.kotlinwebshop.service.ProductService
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -29,8 +30,8 @@ class ProductControllerTest{
 
         Mockito.`when`(productService.listProducts(null))
             .thenReturn(listOf(
-                Product(1, "Apple"),
-                Product(2, "Banana"),
+                Product(1, "Apple", ProductType.FRUIT),
+                Product(2, "Banana", ProductType.FRUIT),
             ))
 
         mockMvc.perform(get("/product"))
@@ -42,7 +43,7 @@ class ProductControllerTest{
 
         Mockito.`when`(productService.listProducts("a"))
             .thenReturn(listOf(
-                Product(1, "Apple"),
+                Product(1, "Apple", ProductType.FRUIT),
             ))
 
         mockMvc.perform(get("/product?q=a"))
@@ -54,7 +55,7 @@ class ProductControllerTest{
 
         Mockito.`when`(productService.addProduct("Ice Cream"))
             .thenReturn(
-                Product(7, "Ice Cream"),
+                Product(7, "Ice Cream", ProductType.NON_FOOD),
             )
 
         mockMvc.perform(post("/product")

@@ -1,6 +1,7 @@
 package de.neufische.kotlinwebshop.controller
 
 import de.neufische.kotlinwebshop.data.Product
+import de.neufische.kotlinwebshop.data.ProductType
 import de.neufische.kotlinwebshop.service.ProductService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
@@ -30,7 +31,7 @@ class ProductController(private val productService: ProductService) {
     ): List<Product> {
         return productService.listProducts(
             q = q,
-            type = "FRUIT")
+            type = ProductType.FRUIT)
     }
 
 

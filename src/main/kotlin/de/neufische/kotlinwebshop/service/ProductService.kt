@@ -3,6 +3,10 @@ package de.neufische.kotlinwebshop.service
 import de.neufische.kotlinwebshop.data.Product
 import org.springframework.stereotype.Service
 
+interface StuffWithName {
+    val name: String
+}
+
 @Service
 class ProductService {
 
@@ -16,7 +20,9 @@ class ProductService {
     fun listProducts(q: String? = null,
                      limit: Int? = 10,
                      type:String? = null): List<Product> {
-        return products.filter { type == null  || it.type == type }.toList()
+        return products.filterMatchedType(type)
+//            .filterMatchedName(q) TODO  toLower  -> start with
+            .toList()
     }
 
     fun getProductById(id: Int): Product? {
@@ -28,4 +34,8 @@ class ProductService {
         products += newProduct
         return newProduct
     }
+}
+fun List<Product>.filterMatchedType(type:String?): List<Product> {
+    type ?: return this
+    return this.filter { it.type == type }
 }

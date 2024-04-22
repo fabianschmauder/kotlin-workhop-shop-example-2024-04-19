@@ -17,9 +17,22 @@ import org.springframework.web.server.ResponseStatusException
 class ProductController(private val productService: ProductService) {
 
     @GetMapping
-    fun listProducts(@RequestParam(required = false) q: String?): List<Product> {
+    fun listProducts(
+        @RequestParam(required = false) q: String?
+
+    ): List<Product> {
         return productService.listProducts(q)
     }
+
+    @GetMapping("/fruit")
+    fun listFruits(
+        @RequestParam(required = false) q: String?
+    ): List<Product> {
+        return productService.listProducts(
+            q = q,
+            type = "FRUIT")
+    }
+
 
     @GetMapping("{id}")
     fun getProductById(@PathVariable id: Int ): Product {

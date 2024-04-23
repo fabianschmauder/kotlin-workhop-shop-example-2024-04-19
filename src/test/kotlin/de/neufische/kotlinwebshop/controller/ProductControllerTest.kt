@@ -1,13 +1,9 @@
 package de.neufische.kotlinwebshop.controller
 
-import de.neufische.kotlinwebshop.repo.CategoriesRepository
-import de.neufische.kotlinwebshop.repo.ProductRepository
-import de.neufische.kotlinwebshop.service.ProductService
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
